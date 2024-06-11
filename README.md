@@ -85,11 +85,11 @@ as `v0.9.2`.
 
 ### `luarocks_version`
 
-Version of LuaRocks[^1] to install.
+Version of LuaRocks[^2] to install.
 
 - Default: `3.11.1`
 
-[^1]: This action uses [LuaRocks](https://luarocks.org/)
+[^2]: This action uses [LuaRocks](https://luarocks.org/)
       to install `busted` and test dependencies.
 
 ## Resources
