@@ -23,12 +23,22 @@ runs:
 
     - uses: actions/cache@v3
       id: cache-luarocks
+      name: Restore cache for luarocks packages.
       with:
         path: |
           ~/.luarocks
         key: ${{ runner.os }}-luarocks-${{ inputs.luarocks_version }}
         restore-keys: |
           ${{ runner.os }}-luarocks-
+
+    - run: date +%F > todays-date
+      shell: bash
+    - name: Restore cache for today's Neovim nightly.
+      if: ${{ inputs.nvim_version }} == 'nightly'
+      uses: actions/cache@v3
+      with:
+        path: _neovim
+        key: ${{ runner.os }}-x64-${{ hashFiles('todays-date') }}
 
     - uses: rhysd/action-setup-vim@v1
       with:
