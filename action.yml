@@ -30,7 +30,6 @@ runs:
       with:
         path: |
           ~/.luarocks
-          .luarocks
         key: ${{ runner.os }}-luarocks-${{ inputs.luarocks_version }}
         restore-keys: |
           ${{ runner.os }}-luarocks-
@@ -47,15 +46,10 @@ runs:
 
     - name: Setup LuaRocks
       uses: hishamhm/gh-actions-luarocks@master
-      if: steps.cache-luarocks.outputs.cache-hit != 'true'
+      # FIXME: caching .luarocks doesn't set up the environment variables (PATH, LUA_PATH, ...) properly
+      # if: steps.cache-luarocks.outputs.cache-hit != 'true'
       with:
         luarocksVersion: ${{ inputs.luarocks_version }}
-
-    - name: DEBUG cache output
-      run: |
-        ls -a .luarocks
-        ls -a ~/.luarocks
-      shell: bash
 
     - name: Install busted and nlua
       if: steps.cache-luarocks.outputs.cache-hit != 'true'
