@@ -48,7 +48,7 @@ jobs:
 ### Running tests locally
 
 With the above [setup](#setup), you can run tests locally,
-if you have `luarocks` or `busted` installed[^1].
+if you have [`luarocks`](https://luarocks.org/) or `busted` installed[^1].
 
 [^1]: The test suite assumes that `nlua` has been installed
       using luarocks into `~/.luarocks/bin/`.
