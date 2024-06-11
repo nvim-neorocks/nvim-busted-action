@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Release
-      uses: google-github-actions/release-please-action@v4
+      uses: googleapis/release-please-action@v4
     - uses: actions/checkout@v4
     - name: Tag major and minor versions
       if: ${{ steps.release.outputs.release_created }}
