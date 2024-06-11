@@ -1,5 +1,5 @@
 describe('Test example', function()
-  it('Test can access vim namespace', function()
+  it('Test can access the vim namespace', function()
     assert.are.same(vim.trim('  a '), 'a')
   end)
 end)
