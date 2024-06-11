@@ -19,6 +19,33 @@ To run tests with `busted`, you need
 - A [`.busted` file](./.busted) that tells `busted` how to run your tests
   with Neovim as the Lua interpreter.
 
+### Example
+
+```yaml
+---
+name: Run tests
+on:
+  pull_request: ~
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Run tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        neovim_version: ['nightly', 'stable']
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests
+        uses: nvim-neorocks/nvim-busted-action@v1
+        with:
+          nvim_version: ${{ matrix.neovim_version }}
+```
+
 ## Inputs
 
 ### `nvim_version`
