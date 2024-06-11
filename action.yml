@@ -1,0 +1,59 @@
+---
+name: 'Nvim Busted Action'
+description: 'Test Neovim plugins with Busted'
+author: 'Marc Jakobi'
+branding:
+  color: 'purple'
+  icon: 'moon'
+inputs:
+  nvim_version:
+    description: |
+      Version of Neovim to install. Valid values are 'stable', 'nightly' or version tag such
+      as 'v8.2.0126'. Note that this value must exactly match to a tag name when installing the
+      specific version.
+    required: false
+    default: 'stable'
+  luarocks_version:
+    description: 'Version of LuaRocks to install.'
+    required: false
+    default: '3.11.1'
+  busted_version:
+    description: 'Version of busted to install.'
+    required: false
+    default: '2.2.0'
+runs:
+  using: "composite"
+  steps:
+
+    - uses: actions/cache@v3
+      with:
+        path: |
+          ~/.luarocks
+          .luarocks
+        key: ${{ runner.os }}-luarocks-${{ inputs.luarocks_version }}
+        restore-keys: |
+          ${{ runner.os }}-luarocks-
+
+    - uses: rhysd/action-setup-vim@v1
+      with:
+        neovim: true
+        version: ${{ inputs.nvim_version }}
+
+    - name: Setup Lua
+      uses: leso-kn/gh-actions-lua@master
+      with:
+        luaVersion: "5.1"
+
+    - name: Setup LuaRocks
+      uses: hishamhm/gh-actions-luarocks@master
+      with:
+        luarocksVersion: ${{ inputs.luarocks_version }}
+
+    - name: Install busted and nlua
+      run: |
+        luarocks install busted --local ${{ inputs.bused_version }}
+        luarocks install nlua --local
+      shell: bash
+
+    - run: luarocks test --local
+      shell: bash
