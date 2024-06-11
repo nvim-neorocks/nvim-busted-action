@@ -1,8 +1,5 @@
 # nvim-busted-action
 
-[![Build status][ci-badge]][ci]
-[![Action Marketplace][release-badge]][marketplace]
-
 A composite [GitHub action](https://github.com/features/actions)
 for running [busted](https://lunarmodules.github.io/busted/) tests
 with [Neovim](https://github.com/neovim/neovim).
@@ -76,6 +73,3 @@ Version of LuaRocks[^1] to install.
 - [Testing Neovim plugins with Busted](https://hiphish.github.io/blog/2024/01/29/testing-neovim-plugins-with-busted/)
 - [Test your Neovim plugins with luarocks & busted](https://mrcjkb.dev/posts/2023-06-06-luarocks-test.html)
 - [Debugging Lua in Neovim](https://zignar.net/2023/06/10/debugging-lua-in-neovim/)
-
-[ci-badge]: https://github.com/nvim-neorocks/nvim-busted-action/actions/workflows/test.yml/badge.svg
-[release-badge]: https://img.shields.io/github/v/release/nvim-neorocks/nvim-busted-action.svg
