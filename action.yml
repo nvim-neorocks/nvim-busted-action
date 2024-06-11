@@ -26,6 +26,7 @@ runs:
   steps:
 
     - uses: actions/cache@v3
+      id: cache-luarocks
       with:
         path: |
           ~/.luarocks
@@ -46,10 +47,12 @@ runs:
 
     - name: Setup LuaRocks
       uses: hishamhm/gh-actions-luarocks@master
+      if: steps.cache-luarocks.outputs.cache-hit != 'true'
       with:
         luarocksVersion: ${{ inputs.luarocks_version }}
 
     - name: Install busted and nlua
+      if: steps.cache-luarocks.outputs.cache-hit != 'true'
       run: |
         luarocks install busted --local ${{ inputs.bused_version }}
         luarocks install nlua --local
