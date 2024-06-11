@@ -51,6 +51,12 @@ runs:
       with:
         luarocksVersion: ${{ inputs.luarocks_version }}
 
+    - name: DEBUG cache output
+      run: |
+        ls -a .luarocks
+        ls -a ~/.luarocks
+      shell: bash
+
     - name: Install busted and nlua
       if: steps.cache-luarocks.outputs.cache-hit != 'true'
       run: |
