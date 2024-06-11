@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Release
+      id: release
       uses: googleapis/release-please-action@v4
       with:
         release-type: simple
