@@ -17,6 +17,8 @@ To run tests with `busted`, you need
   See also: [Rockspec format](https://github.com/luarocks/luarocks/wiki/Rockspec-format)
 - A [`.busted` file](./.busted) that tells `busted` how to run your tests
   with Neovim as the Lua interpreter.
+- A `spec` directory containing test files, 
+  their names ending in `_spec.lua`.
 
 ### Example
 
