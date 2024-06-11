@@ -8,6 +8,8 @@ Supports stable releases, nightly releases and specifying versions.
 
 ## Usage
 
+### Setup
+
 To run tests with `busted`, you need
 
 - A [rockspec](./example-scm-1.rockspec), to specify test dependencies.
@@ -41,6 +43,30 @@ jobs:
         uses: nvim-neorocks/nvim-busted-action@v1
         with:
           nvim_version: ${{ matrix.neovim_version }}
+```
+
+### Running tests locally
+
+With the above [setup](#setup), you can run tests locally,
+if you have `luarocks` or `busted` installed[^1].
+
+[^1]: The test suite assumes that `nlua` has been installed
+      using luarocks into `~/.luarocks/bin/`.
+
+You can then run:
+
+```bash
+luarocks test --local
+# or
+busted
+```
+
+Or if you want to run a single test file:
+
+```bash
+luarocks test spec/path_to_file.lua --local
+# or
+busted spec/path_to_file.lua
 ```
 
 ## Inputs
