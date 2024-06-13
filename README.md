@@ -74,7 +74,7 @@ busted spec/path_to_file.lua
 If you see a `module 'busted.runner'` not found error you need to update your `LUA_PATH`:
 
 ```bash
-eval $(luarocks path --no-bin)
+eval $(luarocks path --no-bin --lua-version 5.1)
 busted --lua nlua spec/mytest_spec.lua
 ```
 
