@@ -14,9 +14,13 @@ inputs:
     required: false
     default: 'stable'
   luarocks_version:
-    description: 'Version of LuaRocks to install.'
+    description: Version of LuaRocks to install.
     required: false
     default: '3.11.1'
+  before:
+    description: Script to run before running tests.
+    required: false
+    default: ''
 runs:
   using: "composite"
   steps:
@@ -56,6 +60,11 @@ runs:
       # if: steps.cache-luarocks.outputs.cache-hit != 'true'
       with:
         luarocksVersion: ${{ inputs.luarocks_version }}
+
+    - name: Run 'before' script
+      if: ${{ inputs.before != '' }}
+      run: ${{ inputs.before }}
+      shell: bash
 
     - name: Install busted and nlua
       if: steps.cache-luarocks.outputs.cache-hit != 'true'
