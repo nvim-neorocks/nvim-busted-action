@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/nvim-neorocks/nvim-busted-action/compare/v1.0.1...v1.1.0) (2024-09-10)
+
+
+### Features
+
+* `before` input ([#5](https://github.com/nvim-neorocks/nvim-busted-action/issues/5)) ([6c3a86f](https://github.com/nvim-neorocks/nvim-busted-action/commit/6c3a86fdbe389e8cd26bce6015f461812558864c))
+
 ## [1.0.1](https://github.com/nvim-neorocks/nvim-busted-action/compare/v1.0.0...v1.0.1) (2024-06-11)
 
 
